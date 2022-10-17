@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">CloudNotes</string>
+    <string name="add_user_icon">Add User Icon</string>
+    <string name="hello">Hello.</string>
+    <string name="lets_get_started">Lets get started.</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="login">Login</string>
+    <string name="already_registered">Already Registered?</string>
+    <string name="create_account">Create Account</string>
 </resources>

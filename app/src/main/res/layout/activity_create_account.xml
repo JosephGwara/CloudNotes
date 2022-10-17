@@ -14,7 +14,8 @@
         android:layout_height="128dp"
         android:id="@+id/signupIcon"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/register" />
+        android:src="@drawable/register"
+        android:contentDescription="@string/add_user_icon" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,7 +26,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hello."
+            android:text="@string/hello"
             android:id="@+id/hellotxt"
             android:textStyle="bold"
             android:textSize="32sp"
@@ -34,7 +35,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lets get started."
+            android:text="@string/lets_get_started"
             android:id="@+id/letsGetStartedtxt"
             android:textStyle="bold"
             android:textSize="36sp"
@@ -53,41 +54,42 @@
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:layout_marginTop="12dp"
-            android:hint="Email"
+            android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:id="@+id/email_edit_text"
             android:background="@drawable/rounded_corners"
             android:textSize="20sp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:autofillHints="" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:layout_marginTop="12dp"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword"
             android:id="@+id/password_edit_text"
             android:background="@drawable/rounded_corners"
             android:textSize="20sp"
             android:textColor="@color/black"
-           />
+            android:importantForAutofill="no" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:layout_marginTop="12dp"
-            android:hint="Confirm Password"
+            android:hint="@string/confirm_password"
             android:inputType="textPassword"
             android:id="@+id/confirm_password_edit_text"
             android:background="@drawable/rounded_corners"
             android:textSize="20sp"
             android:textColor="@color/black"
-            />
+            android:importantForAutofill="no" />
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:id="@+id/create_account_btn"
-            android:text="Create Account"
+            android:text="@string/create_account"
             android:layout_marginTop="12dp"
             android:textSize="16sp"/>
         <ProgressBar
@@ -107,12 +109,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Already Registered?"/>
+            android:text="@string/already_registered"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:id="@+id/Login_text_view_btn"
-            android:text="Login"/>
+            android:text="@string/login"/>
     </LinearLayout>
 </RelativeLayout>
