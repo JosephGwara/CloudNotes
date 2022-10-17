@@ -14,7 +14,7 @@
         android:layout_height="128dp"
         android:id="@+id/signupIcon"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/register"
+        android:src="@drawable/login"
         android:contentDescription="@string/add_user_icon" />
     <LinearLayout
         android:layout_width="match_parent"
@@ -73,23 +73,12 @@
             android:textSize="20sp"
             android:textColor="@color/black"
             android:importantForAutofill="no" />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:layout_marginTop="12dp"
-            android:hint="@string/confirm_password"
-            android:inputType="textPassword"
-            android:id="@+id/confirm_password_edit_text"
-            android:background="@drawable/rounded_corners"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:importantForAutofill="no" />
+
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
             android:layout_height="64dp"
-            android:id="@+id/create_account_btn"
-            android:text="@string/create_account"
+            android:id="@+id/login_btn"
+            android:text="@string/login"
             android:layout_marginTop="12dp"
             android:textSize="16sp"/>
         <ProgressBar
@@ -100,23 +89,5 @@
             android:visibility="gone"
             android:layout_gravity="center"/>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/form_lay"
-        android:orientation="vertical"
-        android:gravity="center">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/already_registered"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:clickable="true"
-            android:id="@+id/login_text_view_btn"
-            android:text="@string/login"
-            android:focusable="true" />
-    </LinearLayout>
+
 </RelativeLayout>
