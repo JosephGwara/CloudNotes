@@ -23,22 +23,16 @@
         android:layout_below="@id/signupIcon"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/hello"
-            android:id="@+id/hellotxt"
-            android:textStyle="bold"
-            android:textSize="32sp"
-            android:textColor="@color/black" />
+
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/lets_get_started"
+            android:text="Welcome to Cloud Notes"
             android:id="@+id/letsGetStartedtxt"
             android:textStyle="bold"
-            android:textSize="36sp"
+            android:gravity="center"
+            android:textSize="30sp"
             android:textColor="@color/black" />
     </LinearLayout>
 
@@ -88,6 +82,25 @@
             android:id="@+id/progress_bar"
             android:visibility="gone"
             android:layout_gravity="center"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/form_lay"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/not_registered"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:id="@+id/register_text_view_btn"
+            android:text="@string/register"
+            android:focusable="true" />
     </LinearLayout>
 
 </RelativeLayout>

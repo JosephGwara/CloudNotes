@@ -49,5 +49,9 @@ class LoginActivity : AppCompatActivity() {
 
 
         }
+        binding.registerTextViewBtn.setOnClickListener {
+            val intent = Intent(this, CreateAccountActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
