@@ -11,4 +11,6 @@
     <string name="create_account">Create Account</string>
     <string name="not_registered">Not Registered?</string>
     <string name="register">Register</string>
+    <string name="add_button">Add button</string>
+    <string name="add_new_note">Add new note</string>
 </resources>
