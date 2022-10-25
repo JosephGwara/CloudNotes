@@ -2,33 +2,55 @@ package com.josephgwara.cloudnotes
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.josephgwara.cloudnotes.databinding.ActivityLoginBinding
-import com.josephgwara.cloudnotes.databinding.ActivityMainBinding
+import com.google.firebase.Timestamp
+import com.google.firebase.firestore.DocumentReference
 import com.josephgwara.cloudnotes.databinding.ActivityNoteDetailsBinding
 
 
 
-private lateinit var binding: ActivityNoteDetailsBinding
-
 class NoteDetailsActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityNoteDetailsBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityNoteDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.saveNoteBtn.setOnClickListener {
-            saveNote()
+            if (binding.notesTitleText.text.toString().isEmpty()){
+                binding.notesTitleText.error = "Title is required"
+            }
+            else{
+                saveNote()
+            }
+
         }
     }
 
     private fun saveNote() {
-       var noteTitle:String = binding.notesTitleText.toString()
-        var noteContent:String = binding.notesContentText.toString()
 
-        if (binding.notesTitleText == null|| binding.notesTitleText.toString() ==""){
+        var noteModel = NoteModel(binding.notesTitleText.text.toString(),binding.notesContentText.text.toString(), Timestamp.now())
 
-            binding.notesTitleText.error = "Title is required"
-            return
+        saveNoteToFirebase(noteModel)
+
+
+    }
+
+    private fun saveNoteToFirebase(noteModel: NoteModel) {
+     var documentReference:DocumentReference
+     var utility = Utility()
+        documentReference = utility.getCollectionReferenceForNotes().document()
+        documentReference.set(noteModel).addOnCompleteListener {
+            if(it.isSuccessful){
+                utility.showToast(this,"Note Added Successfully ")
+                finish()
+            }
+            else{
+                utility.showToast(this,"Failed While adding Note ")
+            }
+
+
         }
+
     }
 }
