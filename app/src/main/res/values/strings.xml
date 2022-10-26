@@ -13,4 +13,6 @@
     <string name="register">Register</string>
     <string name="add_button">Add button</string>
     <string name="add_new_note">Add new note</string>
+    <string name="notes">Notes</string>
+    <string name="note_title">Note Title</string>
 </resources>
