@@ -6,7 +6,6 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.Query
-import com.josephgwara.cloudnotes.databinding.ActivityLoginBinding
 import com.josephgwara.cloudnotes.databinding.ActivityMainBinding
 
 
@@ -36,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         var options:FirestoreRecyclerOptions<NoteModel> = FirestoreRecyclerOptions.Builder<NoteModel>()
             .setQuery(query,NoteModel::class.java).build()
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        noteAdapter = NoteAdapter(options,this)
+        noteAdapter = NoteAdapter(options)
         binding.recyclerView.adapter = noteAdapter
     }
 

@@ -1,7 +1,7 @@
 package com.josephgwara.cloudnotes
 
 import android.content.Context
-import android.provider.ContactsContract.CommonDataKinds.Note
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,18 +9,19 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
-import com.josephgwara.cloudnotes.databinding.ActivityNoteDetailsBinding
 
-private lateinit var binding: ActivityNoteDetailsBinding
 
-class NoteAdapter(options: FirestoreRecyclerOptions<NoteModel>,context: Context) :
+class NoteAdapter(options: FirestoreRecyclerOptions<NoteModel>,var context: Context) :
     FirestoreRecyclerAdapter<NoteModel, NoteAdapter.NoteViewHolder>(options) {
+
+
 
    inner class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-       val titleTextView:TextView = itemView.findViewById<TextView>(R.id.notesTitleTextView)
-       val contentTextView:TextView = itemView.findViewById<TextView>(R.id.notesContentTextView)
-       val timestampTextView:TextView = itemView.findViewById<TextView>(R.id.timeStampTextView)
+       val titleTextView:TextView = itemView.findViewById(R.id.notesTitleTextView)
+       val contentTextView:TextView = itemView.findViewById(R.id.notesContentTextView)
+       val timestampTextView:TextView = itemView.findViewById(R.id.timeStampTextView)
+
 
 
 
@@ -33,10 +34,23 @@ class NoteAdapter(options: FirestoreRecyclerOptions<NoteModel>,context: Context)
     }
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int, note: NoteModel) {
-        var utility = Utility()
-        holder.titleTextView.setText(note.title)
-        holder.contentTextView.setText(note.content)
-        holder.timestampTextView.setText(utility.timeStampString(note.timestamp))
+
+        val utility = Utility()
+        holder.titleTextView.text = note.title
+        holder.contentTextView.text = note.content
+        holder.timestampTextView.text = utility.timeStampString(note.timestamp)
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context,NoteDetailsActivity::class.java)
+
+            intent.putExtra("title",note.title)
+            intent.putExtra("content",note.content)
+            val docId:String = this.snapshots.getSnapshot(position).id
+            intent.putExtra("docId",docId)
+
+            context.startActivity(intent)
+
+        }
 
     }
 
