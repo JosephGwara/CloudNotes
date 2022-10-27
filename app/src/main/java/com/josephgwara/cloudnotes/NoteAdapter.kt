@@ -16,16 +16,11 @@ class NoteAdapter(options: FirestoreRecyclerOptions<NoteModel>,var context: Cont
 
 
 
-   inner class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
        val titleTextView:TextView = itemView.findViewById(R.id.notesTitleTextView)
        val contentTextView:TextView = itemView.findViewById(R.id.notesContentTextView)
        val timestampTextView:TextView = itemView.findViewById(R.id.timeStampTextView)
-
-
-
-
-
 
     }
 
@@ -34,13 +29,14 @@ class NoteAdapter(options: FirestoreRecyclerOptions<NoteModel>,var context: Cont
     }
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int, note: NoteModel) {
-
+        context = holder.itemView.context
         val utility = Utility()
         holder.titleTextView.text = note.title
         holder.contentTextView.text = note.content
         holder.timestampTextView.text = utility.timeStampString(note.timestamp)
 
         holder.itemView.setOnClickListener {
+
             val intent = Intent(context,NoteDetailsActivity::class.java)
 
             intent.putExtra("title",note.title)
