@@ -11,7 +11,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 
 
-class NoteAdapter(options: FirestoreRecyclerOptions<NoteModel>,var context: Context) :
+class NoteAdapter(options: FirestoreRecyclerOptions<NoteModel>) :
     FirestoreRecyclerAdapter<NoteModel, NoteAdapter.NoteViewHolder>(options) {
 
 
@@ -29,7 +29,7 @@ class NoteAdapter(options: FirestoreRecyclerOptions<NoteModel>,var context: Cont
     }
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int, note: NoteModel) {
-        context = holder.itemView.context
+       val context = holder.itemView.context
         val utility = Utility()
         holder.titleTextView.text = note.title
         holder.contentTextView.text = note.content

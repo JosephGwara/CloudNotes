@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings.Global
+import android.view.View
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.DocumentReference
 import com.josephgwara.cloudnotes.databinding.ActivityNoteDetailsBinding
@@ -35,8 +36,13 @@ class NoteDetailsActivity : AppCompatActivity() {
 
         if (isEditMode){
             binding.pageTitle.text = "Edit your Note"
+            binding.deleteNoteTextBtn.visibility = View.VISIBLE
         }
 
+        binding.deleteNoteTextBtn.setOnClickListener {
+            deleteNoteFromFirebase()
+
+        }
         binding.saveNoteBtn.setOnClickListener {
             if (binding.notesTitleText.text.toString().isEmpty()){
                 binding.notesTitleText.error = "Title is required"
@@ -46,6 +52,28 @@ class NoteDetailsActivity : AppCompatActivity() {
             }
 
         }
+    }
+
+    private fun deleteNoteFromFirebase() {
+        var docId: String? = intent.getStringExtra("docId")
+        val documentReference:DocumentReference
+        val utility = Utility()
+
+        documentReference = utility.getCollectionReferenceForNotes().document(docId.toString())
+
+
+        documentReference.delete().addOnCompleteListener {
+            if(it.isSuccessful){
+                utility.showToast(this,"Note Deleted Successfully ")
+                finish()
+            }
+            else{
+                utility.showToast(this,"Failed While Deleting Note ")
+            }
+
+
+        }
+
     }
 
     private fun saveNote() {
