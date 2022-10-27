@@ -24,7 +24,7 @@ class LoginActivity : AppCompatActivity() {
         binding.loginBtn.setOnClickListener {
             val email = binding.emailEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
-
+//checking for empty fields
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                     if (it.isSuccessful) {
@@ -49,6 +49,7 @@ class LoginActivity : AppCompatActivity() {
 
         }
         binding.registerTextViewBtn.setOnClickListener {
+            //taking the user to the register page if they don't have an account
             val intent = Intent(this, CreateAccountActivity::class.java)
             startActivity(intent)
         }

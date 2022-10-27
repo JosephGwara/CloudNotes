@@ -42,6 +42,7 @@ class CreateAccountActivity : AppCompatActivity() {
 
 
                             } else {
+                                //show toast with error message
                                 Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT)
                                     .show()
 
@@ -62,6 +63,7 @@ class CreateAccountActivity : AppCompatActivity() {
 
         }
         binding.loginTextViewBtn.setOnClickListener {
+            //opening the login activity for the user to log in if they have an account already
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
 

@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+            //opening the note details activity when the add button is clicked
         binding.addBtn.setOnClickListener {
             val intent = Intent(this, NoteDetailsActivity::class.java)
             startActivity(intent)
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         setupRecyclerView()
 }
 
+    //this method gets the data from firestore and binds it to the recycler view layout
     private fun setupRecyclerView() {
         var utility = Utility()
         var query:Query = utility.getCollectionReferenceForNotes().orderBy("timestamp",Query.Direction.DESCENDING)
@@ -59,7 +61,9 @@ class MainActivity : AppCompatActivity() {
     }
     private fun showMenu() {
       val popupMenu = PopupMenu(this,binding.menuBtn)
+
         popupMenu.menu.add("Logout")
+
         popupMenu.setOnMenuItemClickListener { item ->
             if (item.title == "Logout") {
                 firebaseAuth = FirebaseAuth.getInstance()
